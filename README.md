@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+GameBlitz'24
+Welcome to the official website for GameBlitz'24, a thrilling game development contest organized as part of TechnoVIT'24 at VIT Chennai!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
+GameBlitz'24 is an exciting event where participants showcase their game development skills. With a focus on creativity and innovation, this contest is an excellent platform for game developers to demonstrate their talent and compete for recognition and prizes.
 
-## Available Scripts
+Event Details
+Event Name: GameBlitz'24
+Date: September 15, 2024
+Time: 9 A.M. - 1 P.M.
+Venue: VIT Chennai
+Registration Fee: ₹200
+Features
+Problem Statements: Various challenging game development problems to test your creativity and technical skills.
+Registration: Easy online registration process.
+Event Updates: Latest updates and announcements about the event.
+Contact Information: Reach out to us for any queries or assistance.
+Installation & Setup
+To run this website locally, follow these steps:
 
-In the project directory, you can run:
+Clone the Repository
 
-### `npm start`
+bash
+Copy code
+git clone https://github.com/your-repository-url/gameblitz-website.git
+cd gameblitz-website
+Install Dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Make sure you have Node.js and npm installed. Run the following command to install required packages:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+npm install
+Start the Development Server
 
-### `npm test`
+bash
+Copy code
+npm start
+The website will be accessible at http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Folder Structure
+public/ - Contains static files such as images and the index.html file.
+src/ - Contains source code for the website, including components, pages, and styling.
+src/components/ - Reusable React components like navigation bars.
+src/pages/ - Page components such as Home, Problem Statements, and Contact.
+src/assets/ - Static assets used in the project, like background images.
+Contributing
+If you would like to contribute to the development of this website, please follow these guidelines:
 
-### `npm run build`
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Commit your changes (git commit -am 'Add new feature').
+Push to the branch (git push origin feature-branch).
+Create a pull request.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contact
+For any inquiries or support, feel free to reach out to us at:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Phone: +91 123 456 7890
+Email: info@gameblitz24.com
+Thank you for visiting the GameBlitz'24 website. We look forward to your participation and wish you the best of luck in the contest!
