@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Calendar, Clock, MapPin, Gamepad2, Phone, Mail } from 'lucide-react';
@@ -6,15 +6,13 @@ import { ChevronRight, Calendar, Clock, MapPin, Gamepad2, Phone, Mail } from 'lu
 // Navigation Component
 const NavBar = ({ isSidebarVisible, onMenuClick }) => (
   <motion.div
-    className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-4 z-50 overflow-hidden transition-all duration-300 ${
-      isSidebarVisible ? 'w-64' : 'w-0'
-    }`}
+    className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-4 z-20 overflow-hidden transition-all duration-300 ${isSidebarVisible ? 'w-64' : 'w-0'}`}
     initial={{ opacity: 0, x: '-100%' }}
     animate={{ opacity: isSidebarVisible ? 1 : 0, x: isSidebarVisible ? 0 : '-100%' }}
     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     style={{
       boxShadow: isSidebarVisible ? '2px 0 5px rgba(0,0,0,0.5)' : 'none',
-      backdropFilter: 'blur(4px)',
+      backdropFilter: isSidebarVisible ? 'blur(4px)' : 'none',
     }}
   >
     <button
@@ -26,24 +24,20 @@ const NavBar = ({ isSidebarVisible, onMenuClick }) => (
     </button>
     <h1 className="text-xl font-bold mb-8">GAMEBLITZ'24</h1>
     <div className="space-y-4">
-      <Link to="/" className="block hover:underline" onClick={onMenuClick}>
-        Home
-      </Link>
-      <Link to="/problem-statements" className="block hover:underline" onClick={onMenuClick}>
-        Problem Statements
-      </Link>
-      <Link to="/contact" className="block hover:underline" onClick={onMenuClick}>
-        Contact
-      </Link>
+      <Link to="/" className="block hover:underline" onClick={onMenuClick}>Home</Link>
+      <Link to="/problem-statements" className="block hover:underline" onClick={onMenuClick}>Problem Statements</Link>
+      <Link to="/contact" className="block hover:underline" onClick={onMenuClick}>Contact</Link>
     </div>
   </motion.div>
 );
 
+
+
 // Home Page Component
 const Home = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollY, setScrollY] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -51,8 +45,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans relative overflow-hidden">
-      <div
-        className="fixed inset-0"
+      <div 
+        className="absolute inset-0"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/assets/home_bg.jpg)`,
           backgroundSize: 'cover',
@@ -63,7 +57,7 @@ const Home = () => {
         }}
       />
       <div className="relative z-10">
-        <motion.section
+        <motion.section 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -81,7 +75,7 @@ const Home = () => {
           </div>
         </motion.section>
 
-        <motion.section
+        <motion.section 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: scrollY > 300 ? 1 : 0, y: scrollY > 300 ? 0 : 50 }}
           transition={{ duration: 0.5 }}
@@ -224,30 +218,22 @@ const App = () => {
 
   return (
     <Router>
-      <div className="relative">
+      <div className="flex">
         <NavBar isSidebarVisible={isSidebarVisible} onMenuClick={handleMenuClick} />
-        <div className="relative">
-          <button
-            className={`fixed top-4 left-4 z-40 text-white p-2 rounded-full ${
-              isSidebarVisible ? 'opacity-0' : 'opacity-100'
-            } transition-opacity duration-300`}
+        <div className={`flex-1 transition-all duration-300 ${isSidebarVisible ? 'ml-64' : 'ml-0'}`}>
+          <button 
+            className={`fixed top-4 left-4 z-30 text-white p-2 rounded-full ${isSidebarVisible ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
             onClick={handleMenuClick}
             style={{ backdropFilter: 'blur(8px)' }}
           >
-            <div
-              className={`w-6 h-0.5 bg-white mb-1 transition-transform ${
-                isSidebarVisible ? 'rotate-45 translate-y-1' : ''
-              }`}
+            <div 
+              className={`w-6 h-0.5 bg-white mb-1 transition-transform ${isSidebarVisible ? 'rotate-45 translate-y-1' : ''}`}
             />
-            <div
-              className={`w-6 h-0.5 bg-white mb-1 transition-opacity ${
-                isSidebarVisible ? 'opacity-0' : ''
-              }`}
+            <div 
+              className={`w-6 h-0.5 bg-white mb-1 transition-transform ${isSidebarVisible ? 'opacity-0' : ''}`}
             />
-            <div
-              className={`w-6 h-0.5 bg-white transition-transform ${
-                isSidebarVisible ? '-rotate-45 -translate-y-1' : ''
-              }`}
+            <div 
+              className={`w-6 h-0.5 bg-white transition-transform ${isSidebarVisible ? '-rotate-45 -translate-y-1' : ''}`}
             />
           </button>
           <Routes>
