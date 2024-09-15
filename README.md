@@ -1,7 +1,3 @@
-
-```markdown
----
-
 # GameBlitz'24
 
 Welcome to the official website for **GameBlitz'24**, a thrilling game development contest organized as part of **TechnoVIT'24** at VIT Chennai!
@@ -83,5 +79,3 @@ For any inquiries or support, feel free to reach out to us at:
 
 Thank you for visiting the GameBlitz'24 website. We look forward to your participation and wish you the best of luck in the contest!
 
----
-```
