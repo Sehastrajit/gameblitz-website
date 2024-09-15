@@ -171,30 +171,38 @@ const Contact = () => {
           <h2 className="text-2xl font-bold mb-4">Faculty Coordinators:</h2>
           <p className="flex items-center mb-2">
             <Phone className="mr-2" />
-            Dr R.Rathna: 9443573477
+            Dr R.Rathna: <a href="tel:+919443573477">9443573477</a>
           </p>
           <p className="flex items-center mb-2">
             <Mail className="mr-2" />
-            rathna.r@vit.ac.in
+            <a href="mailto:rathna.r@vit.ac.in">rathna.r@vit.ac.in</a>
           </p>
           <p className="flex items-center mb-2">
             <Phone className="mr-2" />
-            Dr Anubha Pearline: 9994031215
+            Dr Anubha Pearline: <a href="tel:+919994031215">9994031215</a>
           </p>
           <p className="flex items-center">
             <Mail className="mr-2" />
-            anubhapearline@vit.ac.in
+            <a href="mailto:anubhapearline.s@vit.ac.in">anubhapearline.s@vit.ac.in</a>
           </p>
         </div>
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-4">Student Coordinators:</h2>
           <p className="flex items-center mb-2">
             <Phone className="mr-2" />
-            Sehastrajit: 9445165271
+            Sehastrajit: <a href="tel:+918438218913">8438218913</a>
           </p>
           <p className="flex items-center">
             <Mail className="mr-2" />
-            sehastrajit@example.com
+            <a href="mailto:sehasrtajit@gmail.com">sehastrajit@gmail.com</a>
+          </p>
+          <p className="flex items-center mb-2">
+            <Phone className="mr-2" />
+            Krishna Rochani: <a href="tel:+916354359179">6354359179</a>
+          </p>
+          <p className="flex items-center">
+            <Mail className="mr-2" />
+            <a href="mailto:sehasrtajit@gmail.com">sehastrajit@gmail.com</a>
           </p>
         </div>
       </div>
