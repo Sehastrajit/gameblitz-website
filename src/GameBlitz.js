@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Calendar, Clock, MapPin, Gamepad2, Phone, Mail } from 'lucide-react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 // Home Page Component
 const Home = () => {
@@ -16,13 +16,22 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans relative overflow-hidden">
+      {/* Background image layer */}
       <div 
-        className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-50"
+        className="absolute inset-0"
         style={{
-          transform: `translateY(${scrollY * 0.5}px)`,
-          transition: 'transform 0.1s linear',
+          backgroundImage: `url(${process.env.PUBLIC_URL}/assets/home_bg.jpg)`,
+          backgroundSize: 'cover',        // Ensures the image covers the screen
+          backgroundPosition: 'top center', // Starts the image from the top
+          backgroundAttachment: 'fixed',   // Allows scrolling with the page (parallax effect)
+          backgroundRepeat: 'no-repeat',   // No image repetition
+          zIndex: 0,
         }}
       />
+
+
+      
+      {/* Content layer */}
       <div className="relative z-10">
         <motion.section 
           initial={{ opacity: 0 }}
@@ -160,8 +169,8 @@ const Contact = () => {
             Sehastrajit S: 8438218913
           </p>
           <p className="flex items-center">
-            <Phone className="mr-2" />
-            Krishna Rochani: 6354359179
+            <Mail className="mr-2" />
+            sehastrajit.s@vit.ac.in
           </p>
         </div>
       </div>
@@ -169,24 +178,10 @@ const Contact = () => {
   );
 };
 
-// Navigation Component
-const Navigation = () => {
-  return (
-    <nav className="bg-gray-800 p-4">
-      <ul className="flex justify-center space-x-4">
-        <li><Link to="/" className="text-white hover:text-purple-300">Home</Link></li>
-        <li><Link to="/problem-statements" className="text-white hover:text-purple-300">Problem Statements</Link></li>
-        <li><Link to="/contact" className="text-white hover:text-purple-300">Contact</Link></li>
-      </ul>
-    </nav>
-  );
-};
-
-// Main GameBlitz Component
+// Main App Component
 const GameBlitz = () => {
   return (
     <Router>
-      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/problem-statements" element={<ProblemStatements />} />
