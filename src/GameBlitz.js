@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Calendar, Clock, MapPin, Gamepad2, Phone, Mail } from 'lucide-react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
+// Navigation Component
+const NavBar = ({ isSidebarVisible, onMenuClick }) => (
+  <motion.div
+    className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-4 z-20 overflow-hidden transition-all duration-300 ${isSidebarVisible ? 'w-64' : 'w-0'}`}
+    initial={{ opacity: 0, x: '-100%' }}
+    animate={{ opacity: isSidebarVisible ? 1 : 0, x: isSidebarVisible ? 0 : '-100%' }}
+    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    style={{
+      boxShadow: isSidebarVisible ? '2px 0 5px rgba(0,0,0,0.5)' : 'none',
+      backdropFilter: isSidebarVisible ? 'blur(4px)' : 'none',
+    }}
+  >
+    <button
+      className="text-white text-2xl mb-8 bg-transparent border-none"
+      onClick={onMenuClick}
+      style={{ backdropFilter: 'none' }}
+    >
+      &times;
+    </button>
+    <h1 className="text-xl font-bold mb-8">GAMEBLITZ'24</h1>
+    <div className="space-y-4">
+      <Link to="/" className="block hover:underline" onClick={onMenuClick}>Home</Link>
+      <Link to="/problem-statements" className="block hover:underline" onClick={onMenuClick}>Problem Statements</Link>
+      <Link to="/contact" className="block hover:underline" onClick={onMenuClick}>Contact</Link>
+    </div>
+  </motion.div>
+);
+
+
 
 // Home Page Component
 const Home = () => {
-  console.log("Rendering Home component");
   const [scrollY, setScrollY] = React.useState(0);
 
   React.useEffect(() => {
@@ -16,22 +45,17 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans relative overflow-hidden">
-      {/* Background image layer */}
       <div 
         className="absolute inset-0"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/assets/home_bg.jpg)`,
-          backgroundSize: 'cover',        // Ensures the image covers the screen
-          backgroundPosition: 'top center', // Starts the image from the top
-          backgroundAttachment: 'fixed',   // Allows scrolling with the page (parallax effect)
-          backgroundRepeat: 'no-repeat',   // No image repetition
+          backgroundSize: 'cover',
+          backgroundPosition: 'top center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
           zIndex: 0,
         }}
       />
-
-
-      
-      {/* Content layer */}
       <div className="relative z-10">
         <motion.section 
           initial={{ opacity: 0 }}
@@ -159,18 +183,18 @@ const Contact = () => {
           </p>
           <p className="flex items-center">
             <Mail className="mr-2" />
-            anubhapearline.s@vit.ac.in
+            anubhapearline@vit.ac.in
           </p>
         </div>
-        <div>
+        <div className="mb-6">
           <h2 className="text-2xl font-bold mb-4">Student Coordinators:</h2>
           <p className="flex items-center mb-2">
             <Phone className="mr-2" />
-            Sehastrajit S: 8438218913
+            Sehastrajit: 9445165271
           </p>
           <p className="flex items-center">
             <Mail className="mr-2" />
-            sehastrajit.s@vit.ac.in
+            sehastrajit@example.com
           </p>
         </div>
       </div>
@@ -178,17 +202,41 @@ const Contact = () => {
   );
 };
 
-// Main App Component
-const GameBlitz = () => {
+// App Component
+const App = () => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+  const handleMenuClick = () => setIsSidebarVisible(prev => !prev);
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/problem-statements" element={<ProblemStatements />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div className="flex">
+        <NavBar isSidebarVisible={isSidebarVisible} onMenuClick={handleMenuClick} />
+        <div className={`flex-1 transition-all duration-300 ${isSidebarVisible ? 'ml-64' : 'ml-0'}`}>
+          <button 
+            className={`fixed top-4 left-4 z-30 text-white p-2 rounded-full ${isSidebarVisible ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+            onClick={handleMenuClick}
+            style={{ backdropFilter: 'blur(8px)' }}
+          >
+            <div 
+              className={`w-6 h-0.5 bg-white mb-1 transition-transform ${isSidebarVisible ? 'rotate-45 translate-y-1' : ''}`}
+            />
+            <div 
+              className={`w-6 h-0.5 bg-white mb-1 transition-transform ${isSidebarVisible ? 'opacity-0' : ''}`}
+            />
+            <div 
+              className={`w-6 h-0.5 bg-white transition-transform ${isSidebarVisible ? '-rotate-45 -translate-y-1' : ''}`}
+            />
+          </button>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/problem-statements" element={<ProblemStatements />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 };
 
-export default GameBlitz;
+export default App;
